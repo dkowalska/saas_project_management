@@ -33,7 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem 'haml-rails'
-
+gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrap-views'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
