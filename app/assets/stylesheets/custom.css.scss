@@ -1,0 +1,74 @@
+body, html {
+  height: 100%;
+}
+
+.first-page {
+	background-image: asset-url('main_background.jpg');
+	color: white;
+
+  height: 100%;
+  width: 100%; 
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.title-bold {
+  font-weight: 800;
+  font-size: 90px;
+}
+
+.extra-bold {
+  font-weight: 800;
+}
+
+.first-page-box {
+  font-family: 'Merriweather Sans';
+  font-weight: 300;
+  font-size: 22px;
+	padding-right: 70px;
+	padding-left: 70px;
+	padding-top: 80px;
+	text-align: center;
+}
+
+.plan-panel {
+  color: #1a1a1a;
+  opacity: 0.7;
+  box-shadow: 5px 5px 10px;
+}
+
+.plan-panel:hover {
+  opacity: 0.9
+}
+
+.mb-50 {
+  margin-bottom: 50px
+}
+
+.pl-0 {
+  padding-left: 0px
+}
+
+.sign-up-button {
+  margin-top: 10px;
+  border-radius: 0px;
+}
+
+li {
+  display: block
+}
+
+li:before {
+    color: red;
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 13px;
+    color: black;
+    padding-right: 7px;
+    position: relative;
+}
