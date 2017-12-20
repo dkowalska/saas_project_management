@@ -25,9 +25,11 @@
           %a.navbar-brand(href="#") SaasProjectManagement
           .navbar-collapse.collapse.navbar-responsive-collapse
             %ul.nav.navbar-right.col-md-4          
-              %li.col-md-8.user-name= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile'
+              %li.col-md-4.user-name= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile'
               %li.col-md-1
               %li.col-md-3.logout= link_to('Logout', destroy_user_session_path, class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete)
+              %li.col-md-1
+              %li.col-md-3.logout= link_to('Add members', new_member_path, class: 'btn btn-xs btn-danger', title: 'Add Members')
       .container
         .row
           .col-lg-12
