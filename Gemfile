@@ -57,7 +57,6 @@ group :development do
 end
 
 group :production do
-  gem 'rails_12factor'
   gem 'sendgrid-ruby'
 end
 
@@ -65,3 +64,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
+ruby "2.4.2"
