@@ -17,6 +17,41 @@ body, html {
   margin-left: 0px;
 }
 
+.sign-up-box {
+  font-family: 'Merriweather Sans';
+  font-size: 18px;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-top: 50px;
+}
+
+.size-22 {
+  font-size: 22px;
+}
+
+.link-light-red {
+  color: #ffb3b3 !important;
+}
+
+.link-light-red:hover {
+  color: #ff8080;
+}
+
+.link-light-red:active {
+  color: #ff8080;
+}
+
+.link-light-red:visited {
+  color: #ff8080;
+}
+
+.sign-up-panel {
+  color: #1a1a1a;
+  opacity: 0.9;
+  box-shadow: 5px 5px 10px;
+  padding: 20px 20px 20px 20px;
+}
+
 .title-bold {
   font-weight: 800;
   font-size: 90px;
@@ -78,4 +113,9 @@ li:before {
   z-index: 1;
   left: 0px;
   top: 10px;
+}
+
+.form-control:focus {
+  border-color: #ff3333;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
 }
