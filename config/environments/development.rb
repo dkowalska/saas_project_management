@@ -1,7 +1,7 @@
 Rails.application.configure do
    
   # devise says to define default url
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000'}
 
   # set up for email sending even in dev mode
   # Don't care if the mailer can't send
@@ -28,7 +28,6 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_url_options = { :host => 'http://localhost:3000/'}
 
   # Show full error reports.
   config.consider_all_requests_local = true
