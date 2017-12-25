@@ -30,19 +30,19 @@ body, html {
 }
 
 .link-light-red {
-  color: #ffb3b3 !important;
+  color: white;
 }
 
 .link-light-red:hover {
-  color: #ff8080;
+  color: #ffb3b3;
 }
 
 .link-light-red:active {
-  color: #ff8080;
+  color: #ffb3b3;
 }
 
 .link-light-red:visited {
-  color: #ff8080;
+  color: white;
 }
 
 .sign-up-panel {
@@ -65,9 +65,9 @@ body, html {
   font-family: 'Merriweather Sans';
   font-weight: 300;
   font-size: 19px;
-	padding-right: 50px;
-	padding-left: 50px;
-	padding-top: 90px;
+	padding-right: 70px;
+	padding-left: 70px;
+	padding-top: 130px;
 	text-align: center;
 }
 
@@ -83,6 +83,10 @@ body, html {
 
 .mb-50 {
   margin-bottom: 50px
+}
+
+.mt-30 {
+  margin-top: 30px;
 }
 
 .pl-0 {

@@ -6,14 +6,14 @@
     .col-lg-6.sign-up-box
       .mb-20.text-center
         %h2.title-bold Coord
-        %p.lead Didn't receive confirmation instructions?
+        %p.lead Forgot your password?
       .panel.panel-default.sign-up-panel
         .panel-body
-          = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, role: 'form' }) do |f|
+          = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, role: "form" }) do |f|
             .form-group
               = f.label :email
               = f.email_field :email, autofocus: true, class: 'form-control'
             .text-center
-              = f.submit t('.resend_confirmation_instructions', default: 'Resend confirmation instructions'), class: 'btn btn-danger btn-lg sign-up-button'
+              = f.submit t('.send_me_reset_password_instructions', default: 'SEND ME RESET PASSWORD INSTRUCTIONS'), class: 'btn btn-danger btn-lg sign-up-button'
       .row.text-center
         = render 'devise/shared/links'

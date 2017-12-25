@@ -38,3 +38,5 @@
                     %li.text-danger.extra-bold Unlimited projects
                 %p
                   = link_to 'SIGN UP', new_user_registration_path(plan: 'premium'), class: 'btn btn-danger btn-lg sign-up-button'
+        .row.text-center.mt-30
+          = link_to t('.or_SIGN_IN', default: 'or click here to LOG IN'), new_session_path(:user), class: 'link-light-red'
