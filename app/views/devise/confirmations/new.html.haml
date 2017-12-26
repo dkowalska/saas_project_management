@@ -1,19 +1,19 @@
 .row
-  .col-lg-12.sign_up_alert
+  .col-lg-12.no-session_alert
     = bootstrap_devise_error_messages!
-.container.first-page
+.container.no-session-page
   .row
-    .col-lg-6.sign-up-box
+    .col-lg-6.no-session-box
       .mb-20.text-center
         %h2.title-bold Coord
         %p.lead Didn't receive confirmation instructions?
-      .panel.panel-default.sign-up-panel
+      .panel.panel-default.no-session-panel
         .panel-body
           = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, role: 'form' }) do |f|
             .form-group
               = f.label :email
               = f.email_field :email, autofocus: true, class: 'form-control'
             .text-center
-              = f.submit t('.resend_confirmation_instructions', default: 'Resend confirmation instructions'), class: 'btn btn-danger btn-lg sign-up-button'
+              = f.submit t('.resend_confirmation_instructions', default: 'Resend confirmation instructions'), class: 'btn btn-danger btn-lg mt-10'
       .row.text-center
         = render 'devise/shared/links'

@@ -1,13 +1,13 @@
 .row
-  .col-lg-12.sign_up_alert
+  .col-lg-12.no-session_alert
     = bootstrap_devise_error_messages!
-.container.first-page
+.container.no-session-page
   .row
-    .col-lg-6.sign-up-box
+    .col-lg-6.no-session-box
       .mb-20.text-center
         %h2.title-bold Coord
         %p.lead Welcome back!
-      .panel.panel-default.sign-up-panel
+      .panel.panel-default.no-session-panel
         .panel-body
           = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f|
             .form-group
@@ -22,6 +22,6 @@
                   = f.check_box :remember_me
                   = t('.remember_me', default: 'Remember me')
             .text-center
-              = f.submit  t('.sign_in', default: 'SIGN IN'), class: 'btn btn-danger btn-lg sign-up-button'
+              = f.submit  t('.sign_in', default: 'SIGN IN'), class: 'btn btn-danger btn-lg mt-10'
       .row.text-center
         = render 'devise/shared/links'

@@ -1,9 +1,18 @@
 body, html {
   height: 100%;
   font-family: 'Merriweather Sans';
+  font-weight: 300;
 }
 
-.first-page {
+.row {
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+// Pages with no session
+
+.no-session-page {
 	background-image: asset-url('main_background.jpg');
 	color: white;
 
@@ -16,69 +25,49 @@ body, html {
 
   margin-right: 0px;
   margin-left: 0px;
+
+  display: flex;
+  align-items: center;
 }
 
-.sign-up-box {
+.no-session-box {
   font-size: 15px;
   padding-right: 70px;
   padding-left: 70px;
-  padding-top: 50px;
 }
 
-.size-22 {
-  font-size: 19px;
+.no-session_alert {
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  top: 10px;
 }
 
-.link-light-red {
-  color: white;
-}
-
-.link-light-red:hover {
-  color: #ffb3b3;
-}
-
-.link-light-red:active {
-  color: #ffb3b3;
-}
-
-.link-light-red:visited {
-  color: white;
-}
-
-.sign-up-panel {
+.no-session-panel {
   color: #1a1a1a;
   opacity: 0.9;
   box-shadow: 5px 5px 10px;
   padding: 20px 20px 20px 20px;
 }
 
-.title-bold {
-  font-weight: 800;
-  font-size: 90px;
+.link-white, .link-white:visited {
+  color: white;
 }
 
-.extra-bold {
-  font-weight: 800;
+.link-white:hover, .link-white:active, {
+  color: #ffb3b3;
 }
 
-.first-page-box {
-  font-family: 'Merriweather Sans';
-  font-weight: 300;
-  font-size: 19px;
-	padding-right: 70px;
-	padding-left: 70px;
-	padding-top: 130px;
-	text-align: center;
+// Buttons
+
+.btn-danger {
+  border-radius: 0px;
 }
 
-.plan-panel {
-  color: #1a1a1a;
-  opacity: 0.7;
-  box-shadow: 5px 5px 10px;
-}
+// Paddings and margins
 
-.plan-panel:hover {
-  opacity: 0.9
+.mt-10 {
+  margin-top: 10px;
 }
 
 .mb-50 {
@@ -93,17 +82,45 @@ body, html {
   padding-left: 0px
 }
 
-.sign-up-button {
-  margin-top: 10px;
-  border-radius: 0px;
+// Font-specific
+
+.font-size-19 {
+  font-size: 19px;
 }
 
-.plan-panel li {
+.title-bold {
+  font-weight: 800;
+  font-size: 90px;
+}
+
+.extra-bold {
+  font-weight: 800;
+}
+
+// Root page without session
+
+.first-page-box {
+  font-size: 19px;
+	padding-right: 70px;
+	padding-left: 70px;
+	text-align: center;
+}
+
+.chose-plan-panel {
+  color: #1a1a1a;
+  opacity: 0.7;
+  box-shadow: 5px 5px 10px;
+}
+
+.chose-plan-panel:hover {
+  opacity: 0.9
+}
+
+.chose-plan-panel li {
   display: block
 }
 
-.plan-panel li:before {
-  color: red;
+.chose-plan-panel li:before {
   content: "\e080";
   font-family: 'Glyphicons Halflings';
   font-size: 13px;
@@ -111,6 +128,15 @@ body, html {
   padding-right: 7px;
   position: relative;
 }
+
+// Form control red contouring 
+
+.form-control:focus {
+  border-color: #ff3333;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+// Navbar
 
 .root-link {
   color: white;
@@ -120,28 +146,10 @@ body, html {
   opacity: 0.9;
 }
 
-.root-link:hover {
+.root-link:hover, .root-link:visited {
   color: white;
   opacity: 1;
   text-decoration: none;
-}
-
-.root-link:visited {
-  color: white;
-  opacity: 1;
-  text-decoration: none !important;
-}
-
-.sign_up_alert {
-  position: absolute;
-  z-index: 1;
-  left: 0px;
-  top: 10px;
-}
-
-.form-control:focus {
-  border-color: #ff3333;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
 }
 
 .navbar {
@@ -150,6 +158,11 @@ body, html {
   box-shadow: 0px 0px 7px;
   min-height: 50px;
   padding-top: 6px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .navbar-inverse {
@@ -161,13 +174,7 @@ body, html {
   height: 3px;
   background: #ff534f;
   position: absolute;
-  z-index: 1;
-}
-
-.app-body {
-  background: #f2f2f2;
-  width: 100%;
-  height: 100%;
+  z-index: 2;
 }
 
 .navbar-organization {
@@ -176,7 +183,6 @@ body, html {
   padding: 15px 0px;
   font-size: 30px;
   line-height: 20px;
-  height: 50px;
 }
 
 .menu-dropdown {
@@ -187,11 +193,7 @@ body, html {
   opacity: 0.9;
 }
 
-.menu-dropdown:hover {
-  opacity: 1;
-}
-
-.menu-dropdown:active{
+.menu-dropdown:hover, .menu-dropdown:active {
   opacity: 1;
 }
 
@@ -211,6 +213,15 @@ body, html {
 
 .glyphicon-log-out {
   margin-left: 10px;
+}
+
+// Pages with session
+
+.app-body {
+  background: #f2f2f2;
+  width: 100%;
+  min-height: 100%;
+  padding: 100px 70px 30px 70px;
 }
 
 .alert {

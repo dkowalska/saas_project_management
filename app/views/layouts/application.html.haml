@@ -19,25 +19,7 @@
 
   %body
     - if current_user
-      .container.over-nav
-      .navbar.navbar-inverse
-        .container-fluid
-          .navbar-header
-            .navbar-brand
-              = link_to('Coord', root_path, title: 'Coord', class: 'root-link')
-          .nav.navbar-nav
-            .navbar-organization
-              #{@tenant.name}
-          .navbar-right
-            %ul.nav.navbar-nav         
-              %li.dropdown
-                %a.menu-dropdown.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                  %span.glyphicon.glyphicon-align-justify
-                %ul.dropdown-menu
-                  %li= link_to('ADD MEMBERS', new_member_path, title: 'ADD MEMBERS')
-                  %li= link_to('EDIT PROFILE', edit_user_registration_path, title: 'EDIT PROFILE')
-                  %li.divider
-                  %li= link_to('LOGOUT <i class="glyphicon glyphicon-log-out"></i>'.html_safe, destroy_user_session_path, title: 'LOGOUT', :method => :delete)     
+      = render 'shared/navbar'    
       .container.app-body
         .row
           .col-lg-12

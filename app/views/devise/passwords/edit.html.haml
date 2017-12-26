@@ -1,13 +1,13 @@
 .row
-  .col-lg-12.sign_up_alert
+  .col-lg-12.no-session_alert
     = bootstrap_devise_error_messages!
-.container.first-page
+.container.no-session-page
   .row
-    .col-lg-6.sign-up-box
+    .col-lg-6.no-session-box
       .mb-20.text-center
         %h2.title-bold Coord
         %p.lead Enter your new password below:
-      .panel.panel-default.sign-up-panel
+      .panel.panel-default.no-session-panel
         .panel-body
           = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, role: "form" }) do |f|
             = f.hidden_field :reset_password_token
@@ -18,6 +18,6 @@
               = f.label :password_confirmation, t('.confirm_new_password', default: 'Confirm new password')
               = f.password_field :password_confirmation, class: 'form-control'
             .text-center
-              = f.submit t('.change_my_password', default: 'Change my password'), class: 'btn btn-danger btn-lg sign-up-button'
+              = f.submit t('.change_my_password', default: 'Change my password'), class: 'btn btn-danger btn-lg mt-10'
       .row.text-center
         = render 'devise/shared/links'

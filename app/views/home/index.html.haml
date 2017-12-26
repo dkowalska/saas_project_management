@@ -2,20 +2,20 @@
   %h3
     Organization: #{@tenant.name}
 - else
-  .container.first-page
-    .row
-      .col-lg-12.sign_up_alert
-        = bootstrap_flash
+  .row
+    .col-lg-12.no-session_alert
+      = bootstrap_flash
+  .container.no-session-page
     .row
       .col-lg-6.first-page-box
-        .mb-50
+        .mb-50.text-center
           %h2.title-bold Coord
-          %p.size-22
+          %p.font-size-19
             Welcome to an e-commerce marketing project management application you'll love.
             Please take a look at our great plans:
         .row
           .col-lg-6
-            .panel.panel-default.plan-panel
+            .panel.panel-default.chose-plan-panel
               .panel-body
                 %h2.extra-bold FREE PLAN
                 %p.extra-bold Price: Free
@@ -25,9 +25,9 @@
                     %li Access anywhere
                     %li 1 project
                 %p
-                  = link_to 'SIGN UP', new_user_registration_path(plan: 'free'), class: 'btn btn-danger btn-lg sign-up-button'
+                  = link_to 'SIGN UP', new_user_registration_path(plan: 'free'), class: 'btn btn-danger btn-lg mt-10'
           .col-lg-6
-            .panel.panel-default.plan-panel
+            .panel.panel-default.chose-plan-panel
               .panel-body
                 %h2.extra-bold PREMIUM PLAN
                 %p.extra-bold Price: $10
@@ -37,6 +37,6 @@
                     %li Access anywhere
                     %li.text-danger.extra-bold Unlimited projects
                 %p
-                  = link_to 'SIGN UP', new_user_registration_path(plan: 'premium'), class: 'btn btn-danger btn-lg sign-up-button'
+                  = link_to 'SIGN UP', new_user_registration_path(plan: 'premium'), class: 'btn btn-danger btn-lg mt-10'
         .row.text-center.mt-30
-          = link_to t('.or_SIGN_IN', default: 'or click here to LOG IN'), new_session_path(:user), class: 'link-light-red'
+          = link_to t('.or_SIGN_IN', default: 'or click here to LOG IN'), new_session_path(:user), class: 'link-white'

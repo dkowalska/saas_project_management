@@ -1,14 +1,23 @@
-= bootstrap_devise_error_messages!
-.panel.panel-default.devise-bs
-  .panel-heading
-    %h4 Create password
-  .panel-body
-    = form_for(resource, as: resource_name, url: update_user_confirmation_path, html: { method: :put, :class => "form login" }) do |f|
-      = hidden_field_tag :confirmation_token, @confirmation_token
-      .form-group
-        = f.label :password, class: "control-label"
-        = f.password_field :password, class: "form-control"
-      .form-group
-        = f.label :password_confirmation, class: "control-label"
-        = f.password_field :password_confirmation, class: "form-control"
-      = f.submit 'Create password', class: "btn btn-primary"
+.row
+  .col-lg-12.no-session_alert
+    = bootstrap_devise_error_messages!
+.container.no-session-page
+  .row
+    .col-lg-6.no-session-box
+      .mb-20.text-center
+        %h2.title-bold Coord
+        %p.lead Please create your password
+      .panel.panel-default.no-session-panel
+        .panel-body
+          = form_for(resource, as: resource_name, url: update_user_confirmation_path, html: { method: :put, :class => "form login" }) do |f|
+            = hidden_field_tag :confirmation_token, @confirmation_token
+          .form-group
+            = f.label :password, class: "control-label"
+            = f.password_field :password, class: "form-control"
+          .form-group
+            = f.label :password_confirmation, class: "control-label"
+            = f.password_field :password_confirmation, class: "form-control"
+            .text-center
+              = f.submit 'Create password', class: 'btn btn-danger btn-lg mt-10'
+      .row.text-center
+        = render 'devise/shared/links'
