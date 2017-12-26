@@ -166,7 +166,7 @@ body, html {
 }
 
 .navbar-inverse {
-  background: #1a1a1a;
+  background:  #262626;
 }
 
 .over-nav {
@@ -197,8 +197,13 @@ body, html {
   opacity: 1;
 }
 
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background: #262626;
+}
+
+
 .dropdown-menu {
-  background: #000000;
+  background: #4d4d4d;
   font-size: 15px;
 }
 
