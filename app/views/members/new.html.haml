@@ -13,7 +13,7 @@
       = fields_for( :user ) do |w|
         .form-group
           = w.label :email
-          %i Ex. test@example.com; must be unique
+          %i (must be unique)
           = w.text_field :email, autofocus: true, class: 'form-control'
         .form-group
           = f.label :first_name

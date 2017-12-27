@@ -205,17 +205,16 @@ body, html {
   background: #262626;
 }
 
-
-.dropdown-menu {
+.nav-dropdown-menu {
   background: #4d4d4d;
   font-size: 15px;
 }
 
-.dropdown-menu > li > a {
+.nav-dropdown-menu > li > a {
   color: #f2f2f2;
 }
 
-.dropdown-menu > li > a:hover {
+.nav-dropdown-menu > li > a:hover {
   background: #ff534f;
   color: #f2f2f2;
 }
@@ -241,9 +240,9 @@ body, html {
 
 .default-panel-heading {
   text-align: center;
-  background: #262626 !important;
-  color: #e6e6e6 !important;
-  border-color: #0d0d0d !important;
+  background: white !important;
+  color: #262626 !important;
+  border-color: white !important;
   border-radius: 25px;
 }
 
@@ -259,4 +258,13 @@ body, html {
 
 .link-red:hover, .link-red:active, {
   color: #ff3633;
+}
+
+.datepicker table tr td.active:active, 
+.datepicker table tr td.active.highlighted:active, 
+.datepicker table tr td.active.active, 
+.datepicker table tr td.active.highlighted.active,
+.datepicker table tr td.active.active:hover, 
+.datepicker table tr td.active.highlighted.active:hover {
+   background-color: #ff534f;
 }

@@ -35,6 +35,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+gem 'bootstrap-datepicker-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'jquery-rails'
