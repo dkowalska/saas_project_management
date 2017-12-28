@@ -3,23 +3,19 @@
     = f.label :title, class: 'control-label col-lg-2'
     .col-lg-10
       = f.text_field :title, class: 'form-control', required: true
-    = f.error_span(:title)
   .form-group
     = f.label :details, class: 'control-label col-lg-2'
     .col-lg-10
       = f.text_field :details, class: 'form-control', required: true
-    = f.error_span(:details)
   .form-group
     = f.label :expected_start_date, class: 'control-label col-lg-2'
     .col-lg-10
       = f.text_field :expected_start_date, class: 'form-control datepicker', required: true
-    = f.error_span(:expected_start_date)
   .form-group
     = f.label :expected_completion_date, class: 'control-label col-lg-2'
     .col-lg-10
       = f.text_field :expected_completion_date, class: 'form-control datepicker', required: true
-    = f.error_span(:expected_completion_date)
-    = f.hidden_field :tenant_id, value: params[:tenant_id], class: 'form-control'
+  = f.hidden_field :tenant_id, value: params[:tenant_id], class: 'form-control'
   .form-group
     .col-lg-offset-2.col-lg-10
       = f.submit nil,class: 'btn btn-primary'

@@ -36,4 +36,8 @@ module ApplicationHelper
     end
     Tenant.current_tenant.name
   end
+
+  def s3_link(tenant_id, artifact_key)
+    link_to artifact_key, "#{artifact_key}", target: 'new'
+  end
 end
