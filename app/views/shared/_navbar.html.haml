@@ -6,7 +6,7 @@
         = link_to('Coord', root_path, title: 'Coord', class: 'root-link')
     .nav.navbar-nav
       .navbar-organization
-        #{@tenant.name}
+        = organization_name current_user
     .navbar-right
       %ul.nav.navbar-nav         
         %li.dropdown

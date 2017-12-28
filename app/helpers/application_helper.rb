@@ -27,4 +27,13 @@ module ApplicationHelper
     end
     flash_messages.join("\n").html_safe
   end
+
+  def organization_name(current_user)
+    if session[:tenant_id]
+      Tenant.set_current_tenant session[:tenant_id]
+    else
+      Tenant.set_current_tenant current_user.tenants.first
+    end
+    Tenant.current_tenant.name
+  end
 end
