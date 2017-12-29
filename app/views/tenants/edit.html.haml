@@ -1,0 +1,20 @@
+- unless flash.empty?
+  .alert.fade.in.alert-danger
+    %button.close{"data-dismiss" => "alert", :type => "button"} ×
+    = flash[:error]
+.panel.panel-default.signed-in-panel-default
+  .panel-heading.default-panel-heading
+    %h2 CHANGE PLAN
+  .panel-body.pt-30
+    = form_for @tenant, url: update_plan_path do |f|
+      .form-group
+        = f.label :plan
+        = f.select :plan, options_for_select(Plan.options, 'lkjj'), {}, required: true, class: "form-control"
+        = @tenant.plan
+      .form-group
+        = f.label :current_password
+        %i
+          (#{t('.we_need_your_current_password_to_confirm_your_changes', default: 'we need your current password to confirm your changes')})
+        = f.password_field :current_password, required: true, class: 'form-control'
+      .text-center
+        = f.submit t('.update', default: 'Update'), class: 'btn btn-lg btn-danger mt-10'

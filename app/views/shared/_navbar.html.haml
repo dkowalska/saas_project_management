@@ -15,5 +15,6 @@
           %ul.dropdown-menu.nav-dropdown-menu
             %li= link_to('ADD MEMBERS', new_member_path, title: 'ADD MEMBERS')
             %li= link_to('EDIT PROFILE', edit_user_registration_path, title: 'EDIT PROFILE')
+            %li= link_to('CHANGE PLAN', edit_plan_path, title: 'CHNAGE PLAN')
             %li.divider
             %li= link_to('LOGOUT <i class="glyphicon glyphicon-log-out"></i>'.html_safe, destroy_user_session_path, title: 'LOGOUT', :method => :delete) 
