@@ -14,13 +14,16 @@
         .form-group
           = w.label :email
           %i (must be unique)
-          = w.text_field :email, autofocus: true, class: 'form-control'
+          = w.text_field :email, autofocus: true, required: true, class: 'form-control'
         .form-group
           = f.label :first_name
-          = f.text_field :first_name, class: 'form-control'
+          = f.text_field :first_name, required: true, class: 'form-control'
         .form-group
           = f.label :last_name
-          = f.text_field :last_name, class: 'form-control'
+          = f.text_field :last_name, required: true, class: 'form-control'
+        .form-group
+          = f.label :role
+          = w.select :role, options_for_select(User.roles.keys.map { |r| [r.humanize, r]}),{}, required: true, class: "form-control"
         .text-center
           %button.btn.btn-lg.btn-danger.mt-10.button{ :type => "submit" }
             Create user

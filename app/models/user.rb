@@ -7,4 +7,37 @@ class User < ApplicationRecord
   acts_as_universal_and_determines_account
   has_one :member, :dependent => :destroy
 
+  enum role: {admin: 0, account_manager: 1, graphic_designer: 2, copywriter: 3, client: 4}
+
+  def is_admin?
+    if role == 0
+      true
+    else
+      false
+    end
+  end
+
+  def is_account_manager?
+    if role == 1
+      true
+    else
+      false
+    end
+  end
+
+  def is_employee?
+    if ( role == 2 || role == 3 )
+      true
+    else
+      false
+    end
+  end
+
+  def is_client?
+    if role == 4
+      true
+    else 
+      false
+    end
+  end
 end
