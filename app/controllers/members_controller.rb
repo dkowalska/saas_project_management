@@ -4,6 +4,7 @@ class MembersController < ApplicationController
   # layout  "sign", :only => [:new, :edit, :create]
 
   def new()
+    authorize Member
     @member = Member.new()
     @user   = User.new()
   end
