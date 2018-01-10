@@ -28,24 +28,20 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.users << current_user
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to root_url, notice: 'Project was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @project.save
+      redirect_to root_url, notice: 'Project was successfully created.' 
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to root_url, notice: 'Project was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @project.update(project_params)
+      redirect_to root_url, notice: 'Project was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -53,25 +49,21 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     @project.destroy
-    respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Project was successfully destroyed.' }
-    end
+    redirect_to root_url, notice: 'Project was successfully destroyed.'
   end
 
   def  users
-    @project_users = (@project.users + (User.where(tenant_id: @tenant.id, role: 0))) - [current_user]
-    @other_users = User.where(tenant_id: @tenant.id) - (@project_users + [current_user])
+    @project_users = (@project.users.where.not(role: "admin") + @tenant.users.where(role: "admin")) - [current_user]
+    @other_users = @tenant.users - (@project_users + [current_user])
   end
 
   def add_user
-    @project_user = UserProject.new(user_id: params[:user_id], project_is: @project.id)
+    @project_user = UserProject.new(user_id: params[:user_id], project_id: @project.id)
 
-    respond_to do |format|
-      if @project_user.save
-        format.html { redirect_to users_tenant_project_url(id: @project.id, tenant_id: @project.tenant_id), error: "User was succesfullty added to project"}
-      else
-        format.html { redirect_to users_tenant_project_url(id: @project.id, tenant_id: @project.tenant_id), error: "User was not added to project"}
-      end
+    if @project_user.save
+      redirect_to users_tenant_project_url(id: @project.id, tenant_id: @project.tenant_id), notice: "User was succesfullty added to project"
+    else
+      redirect_to users_tenant_project_url(id: @project.id, tenant_id: @project.tenant_id), error: "User was not added to project"
     end
   end
 

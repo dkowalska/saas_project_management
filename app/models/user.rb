@@ -12,7 +12,7 @@ class User < ApplicationRecord
   enum role: {admin: 0, account_manager: 1, graphic_designer: 2, copywriter: 3, client: 4}
 
   def is_admin?
-    if role == 0
+    if role == "admin"
       true
     else
       false
@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def is_account_manager?
-    if role == 1
+    if role == "account_manager"
       true
     else
       false
@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def is_employee?
-    if ( role == 2 || role == 3 )
+    if ( role == "graphic_designer" || role == "copywriter" )
       true
     else
       false
@@ -36,7 +36,7 @@ class User < ApplicationRecord
   end
 
   def is_client?
-    if role == 4
+    if role == "client"
       true
     else 
       false

@@ -27,24 +27,20 @@ class ArtifactsController < ApplicationController
   def create
     @artifact = Artifact.new(artifact_params)
 
-    respond_to do |format|
-      if @artifact.save
-        format.html { redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Artifact was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @artifact.save
+      redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Artifact was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /artifacts/1
   # PATCH/PUT /artifacts/1.json
   def update
-    respond_to do |format|
-      if @artifact.update(artifact_params)
-        format.html { redirect_to @artifact, notice: 'Artifact was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @artifact.update(artifact_params)
+      redirect_to @artifact, notice: 'Artifact was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -52,9 +48,7 @@ class ArtifactsController < ApplicationController
   # DELETE /artifacts/1.json
   def destroy
     @artifact.destroy
-    respond_to do |format|
-      format.html { redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Artifact was successfully destroyed.' }
-    end
+    redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Artifact was successfully destroyed.'
   end
 
   private
