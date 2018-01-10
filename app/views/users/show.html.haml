@@ -1,0 +1,15 @@
+.panel.panel-default.signed-in-panel-default.user-profile-panel
+  .panel-heading.default-panel-heading
+    %h2 USER PROFILE
+  .panel-body.pt-30.text-center
+    %p 
+      %strong NAME: 
+      #{member_name(@user)}
+    %p 
+      %strong EMAIL: 
+      #{@user.email}
+    %p 
+      %strong ROLE: 
+      #{@user.role.humanize}
+    - if policy(@user).edit?
+      = link_to 'EDIT PROFILE', edit_user_registration_path, class: 'btn btn-danger btn-lg mt-30'

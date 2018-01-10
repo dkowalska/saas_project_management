@@ -78,6 +78,10 @@ body, html {
   margin-bottom: 50px
 }
 
+.mr-10 {
+  margin-right: 10px
+}
+
 .pl-0 {
   padding-left: 0px
 }
@@ -189,6 +193,23 @@ body, html {
   line-height: 20px;
 }
 
+.navbar-name {
+  font-size: 23px;
+  line-height: 20px;
+  padding: 15px 0px 0px 50px;
+}
+
+.edit-user-navbar-link {
+  color: white;
+  opacity: 0.9;
+}
+
+.edit-user-navbar-link:hover, .edit-user-navbar-link:visited {
+  color: white;
+  opacity: 1;
+  text-decoration: none;
+}
+
 .menu-dropdown {
   color: white !important;
   font-weight: 800;
@@ -234,6 +255,11 @@ body, html {
 
 .alert {
   margin-top: 20px;
+}
+
+.user-profile-panel {
+  width: 700px;
+  margin: 0 auto;
 }
 
 // Forms for pages with sessions

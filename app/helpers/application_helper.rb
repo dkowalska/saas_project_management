@@ -28,6 +28,15 @@ module ApplicationHelper
     flash_messages.join("\n").html_safe
   end
 
+  def s3_link(tenant_id, artifact_key)
+    link_to artifact_key, "#{artifact_key}", target: 'new'
+  end
+
+  def member_name(current_user)
+    member = Member.where(tenant_id: current_user.tenants.first.id, user_id: current_user.id).first
+    "#{member.first_name} #{member.last_name}"
+  end
+
   def organization_name(current_user)
     if session[:tenant_id]
       Tenant.set_current_tenant session[:tenant_id]
@@ -37,7 +46,4 @@ module ApplicationHelper
     Tenant.current_tenant.name
   end
 
-  def s3_link(tenant_id, artifact_key)
-    link_to artifact_key, "#{artifact_key}", target: 'new'
-  end
 end

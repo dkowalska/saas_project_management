@@ -7,6 +7,11 @@
     .nav.navbar-nav
       .navbar-organization
         = organization_name current_user
+    .nav.navbar-nav
+      .navbar-name
+        = link_to user_path(id: current_user.id), class: 'edit-user-navbar-link' do
+          %i.glyphicon.glyphicon-user.mr-10
+          = member_name current_user
     .navbar-right
       %ul.nav.navbar-nav         
         %li.dropdown
