@@ -78,6 +78,10 @@ body, html {
   margin-top: 30px;
 }
 
+.mt-50 {
+  margin-top: 50px;
+}
+
 .mb-50 {
   margin-bottom: 50px
 }
@@ -111,6 +115,10 @@ body, html {
 
 .red-text {
  color: #ff534f;
+}
+
+.float-right {
+  float: right;
 }
 
 // Root page without session
@@ -306,4 +314,13 @@ body, html {
 .datepicker table tr td.active.active:hover, 
 .datepicker table tr td.active.highlighted.active:hover {
    background-color: #ff534f;
+}
+
+
+.projects-menu-nav-tabs > li > a{
+  color: #999999;
+}
+
+.projects-menu-nav-tabs > li > a:hover{
+  color: #0d0d0d;
 }

@@ -29,4 +29,22 @@ class Project < ApplicationRecord
     end
   end
 
+  def self.current_projects(tenant_id, user)
+    tenant = Tenant.find(tenant_id)
+    if tenant.plan == 'premium'
+      if user.is_admin? || user.is_account_manager?
+        tenant.projects.where("expected_start_date < ? AND expected_completion_date > ?", Date.today, Date.today)
+      else
+        user.projects.where("tenant_id = ? AND expected_start_date < ? AND expected_completion_date > ?", tenant.id, Date.today, Date.today)
+      end
+    else
+      if user.is_admin? || user.is_account_manager?
+        tenant.projects.where("expected_start_date < ? AND expected_completion_date > ?", Date.today, Date.today).order(:id).limit(1)
+      else
+        user.projects.where("tenant_id = ? AND expected_start_date < ? AND expected_completion_date > ?", tenant.id, Date.today, Date.today).order(:id).limit(1)
+      end
+    end
+  end
+
+
 end

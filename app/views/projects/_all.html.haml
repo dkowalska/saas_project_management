@@ -1,0 +1,29 @@
+.panel.panel-default.signed-in-panel-default
+  .panel-heading.default-panel-heading
+    %h2 
+      PROJECTS
+  .panel-body.pt-30
+    - if @all_projects.empty?
+      %p.text-center You have no projects.
+    - else
+      %ul.nav.nav-tabs.projects-menu-nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#all_projects", class: 'red-link'} All projects
+        %li
+          %a{"data-toggle" => "tab", :href => "#current_projects"} Current projects
+        %li
+          %a{"data-toggle" => "tab", :href => "#future_projects"} Future projects
+        %li
+          %a{"data-toggle" => "tab", :href => "#past_projects"} Past projects
+      .tab-content.mt-50
+        #all_projects.tab-pane.fade.in.active
+          = render 'projects/list', projects: @all_projects
+        #current_projects.tab-pane.fade
+          = render 'projects/list', projects: @current_projects
+        #future_projects.tab-pane.fade
+          = render 'projects/list', projects: @future_projects
+        #past_projects.tab-pane.fade
+          = render 'projects/list', projects: @past_projects
+
+- if @tenant.can_create_projects? && current_user.can_create_projects?
+  = link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id), :class => 'btn btn-primary'

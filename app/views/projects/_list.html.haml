@@ -1,30 +1,23 @@
-
-- if @projects.size > 0
-  - model_class = Project
-  .page-header
-    %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+- if projects.empty?
+  %p.text-center There are no projects fulfilling this criteria.
+- else
   %table.table.table-striped
     %thead
-      %th= model_class.human_attribute_name(:title)
-      %th= model_class.human_attribute_name(:details)
-      %th= model_class.human_attribute_name(:expected_start_date)
-      %th= model_class.human_attribute_name(:expected_completion_date)
+      %th.col-lg-3 Name
+      %th.col-lg-4 Details
+      %th.col-lg-1 Start date
+      %th.col-lg-1 Completion date
       - if current_user.admin? || current_user.account_manager?
-        %th
+        %th.col-lg-2
     %tbody
-      - @projects.each do |project|
+      - projects.each do |project|
         %tr
-          %td= link_to project.title, tenant_project_path(project, tenant_id: @tenant.id)
+          %td= link_to project.title, tenant_project_path(project, tenant_id: @tenant.id), class: 'link-red'
           %td= project.details
           %td= project.expected_start_date
           %td= project.expected_completion_date
           - if policy(project).can_manage_projects?
-            %td
+            %td.float-right
               = link_to t('.edit', :default => t("helpers.links.edit")), edit_tenant_project_path(project, tenant_id: @tenant.id), :class => 'btn btn-default btn-xs'
               = link_to 'Edit Users', users_tenant_project_path(project, tenant_id: @tenant.id), :class => 'btn btn-default btn-xs'
               = link_to t('.destroy', :default => t("helpers.links.destroy")), tenant_project_path(project, tenant_id: @tenant.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
-- else  
-  %p.text-center You have no projects.
-
-- if @tenant.can_create_projects? && current_user.can_create_projects?
-  = link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id), :class => 'btn btn-primary'
