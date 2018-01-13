@@ -24,6 +24,17 @@ class MembersController < ApplicationController
 
   end
 
+  def update()
+    @member = Member.find(params[:id])
+    if @member.update(member_params)
+      flash[:notice] = 'Profile successfully updated'
+      redirect_to root_url
+    else
+      flash[:error] = 'Error - profile cannot be updated'
+      render template: 'devise/registrations/edit'
+    end
+  end
+
 
   private
 
