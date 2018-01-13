@@ -12,3 +12,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+#Rails.application.config.assets.precompile += %w( event_calendar.js event_calendar.css jquery-1.7.1.min.js jquery-ui-1.8.17.custom.min.js jquery-ui-1.8.17.custom.css jquery.ui.datepicker-de.js)
