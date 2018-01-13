@@ -4,16 +4,19 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %script{:src => "/assets/jquery.js", :type => "text/javascript"}
+    
     %title= content_for?(:title) ? yield(:title) : "Coord - manage your project"
 
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
-    %link{:href => "https://fonts.googleapis.com/css?family=Merriweather+Sans:300,800", :rel => "stylesheet"}/
+    %script{:src => "/assets/jquery.js", :type => "text/javascript"}
     = javascript_include_tag "application"
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
-      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
+    
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
+
+    %link{:href => "https://fonts.googleapis.com/css?family=Merriweather+Sans:300,800", :rel => "stylesheet"}/
 
 
   %body
