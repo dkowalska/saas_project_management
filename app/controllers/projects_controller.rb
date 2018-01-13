@@ -16,11 +16,13 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
+    authorize @project, :can_manage_projects?
     @project = Project.new
   end
 
   # GET /projects/1/edit
   def edit
+    authorize @project, :can_manage_projects?
   end
 
   # POST /projects
@@ -48,11 +50,13 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    authorize @project, :can_manage_projects?
     @project.destroy
     redirect_to root_url, notice: 'Project was successfully destroyed.'
   end
 
   def  users
+    authorize @project, :can_manage_projects?
     @project_users = ((@project.users.where.not(role: "admin") + @tenant.users.where(role: "admin")) - [current_user]).sort_by &:email
     @other_users = (@tenant.users - (@project_users + [current_user])).sort_by &:email
   end

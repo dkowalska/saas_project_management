@@ -42,4 +42,8 @@ class User < ApplicationRecord
       false
     end
   end
+
+  def can_create_projects?
+    self.is_admin? || self.is_account_manager?
+  end
 end
