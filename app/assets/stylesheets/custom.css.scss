@@ -64,6 +64,10 @@ body, html {
   border-radius: 0px;
 }
 
+.btn-add-remove {
+  width: 60px;
+}
+
 // Paddings and margins
 
 .mt-10 {
@@ -103,6 +107,10 @@ body, html {
 
 .extra-bold {
   font-weight: 800;
+}
+
+.red-text {
+ color: #ff534f;
 }
 
 // Root page without session
@@ -260,6 +268,11 @@ body, html {
 .user-profile-panel {
   width: 700px;
   margin: 0 auto;
+}
+
+.table-users {
+  width: 90%;
+  margin: auto;
 }
 
 // Forms for pages with sessions

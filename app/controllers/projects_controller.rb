@@ -53,8 +53,8 @@ class ProjectsController < ApplicationController
   end
 
   def  users
-    @project_users = (@project.users.where.not(role: "admin") + @tenant.users.where(role: "admin")) - [current_user]
-    @other_users = @tenant.users - (@project_users + [current_user])
+    @project_users = ((@project.users.where.not(role: "admin") + @tenant.users.where(role: "admin")) - [current_user]).sort_by &:email
+    @other_users = (@tenant.users - (@project_users + [current_user])).sort_by &:email
   end
 
   def add_user
