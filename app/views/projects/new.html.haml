@@ -1,4 +1,27 @@
-- model_class = Project
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
-= render :partial => "form"
+- unless flash[:error].nil?
+  .alert.fade.in.alert-danger
+    %button.close{"data-dismiss" => "alert", :type => "button"} ×
+    = flash[:error]
+.panel.panel-default.signed-in-panel-default
+  .panel-heading.default-panel-heading
+    %h2   
+      %strong CREATE PROJECT
+  .panel-body.pt-30   
+    = form_for [@tenant, @project] do |f|
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: 'form-control', required: true
+      .form-group
+        = f.label :details
+        = f.text_area :details, class: 'form-control', required: true
+      .form-group
+        = f.label :expected_start_date
+        = f.text_field :expected_start_date, class: 'form-control datepicker', required: true
+      .form-group
+        = f.label :expected_completion_date
+        = f.text_field :expected_completion_date, class: 'form-control datepicker', required: true
+      = f.hidden_field :tenant_id, value: params[:tenant_id], class: 'form-control'
+      .text-center
+        = f.submit 'Create project',class: 'btn btn-lg btn-danger mt-30'
+.text-center.mt-30                       
+  = link_to 'Back', root_path, :class => 'link-red'
