@@ -24,6 +24,6 @@
           = render 'projects/list', projects: @future_projects
         #past_projects.tab-pane.fade
           = render 'projects/list', projects: @past_projects
-
-- if @tenant.can_create_projects? && current_user.can_create_projects?
-  = link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id), :class => 'btn btn-primary'
+        - if @tenant.can_create_projects? && current_user.can_create_projects?
+          .text-center.mt-50
+            = link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id), :class => 'btn btn-danger'
