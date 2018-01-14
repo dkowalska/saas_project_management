@@ -17,6 +17,6 @@
         = f.file_field :upload, required: true
       = f.hidden_field :project_id
       .text-center
-        = f.submit nil,class: 'btn btn-lg btn-danger mt-30'
+        = f.submit 'Add attachment',class: 'btn btn-lg btn-danger mt-30'
 .text-center.mt-30                       
   = link_to 'Back', tenant_project_path(id: @project.id, tenant_id: @project.tenant_id), :class => 'link-red'

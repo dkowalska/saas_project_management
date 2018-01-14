@@ -7,8 +7,7 @@
       %th.col-lg-4 Details
       %th.col-lg-1 Start date
       %th.col-lg-1 Completion date
-      - if current_user.admin? || current_user.account_manager?
-        %th.col-lg-2
+      %th.col-lg-2
     %tbody
       - projects.each do |project|
         %tr
@@ -16,8 +15,8 @@
           %td= project.details
           %td= project.expected_start_date
           %td= project.expected_completion_date
-          - if policy(project).can_manage_projects?
-            %td.float-right
+          %td.float-right
+            - if policy(project).can_manage_projects?
               = link_to t('.edit', :default => t("helpers.links.edit")), edit_tenant_project_path(project, tenant_id: @tenant.id), :class => 'btn btn-default btn-xs'
               = link_to 'Edit Users', users_tenant_project_path(project, tenant_id: @tenant.id), :class => 'btn btn-default btn-xs'
               = link_to t('.destroy', :default => t("helpers.links.destroy")), tenant_project_path(project, tenant_id: @tenant.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'

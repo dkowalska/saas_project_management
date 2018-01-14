@@ -29,7 +29,8 @@ module ApplicationHelper
   end
 
   def s3_link(tenant_id, artifact_key)
-    link_to artifact_key, "#{artifact_key}", target: 'new'
+    label = File.basename(URI.parse(artifact_key).path)
+    link_to label, "#{artifact_key}", target: 'new'
   end
 
   def member_name(current_user)

@@ -9,5 +9,4 @@ module ProjectHelper
       "In planning"
     end
   end
-
 end

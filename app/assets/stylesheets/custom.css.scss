@@ -60,10 +60,6 @@ body, html {
 
 // Buttons
 
-.btn-danger {
-  border-radius: 0px;
-}
-
 .btn-add-remove {
   width: 60px;
 }
@@ -279,6 +275,11 @@ body, html {
 }
 
 .table-users {
+  width: 90%;
+  margin: auto;
+}
+
+.table-attachments {
   width: 90%;
   margin: auto;
 }
