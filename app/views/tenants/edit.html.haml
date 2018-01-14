@@ -1,4 +1,4 @@
-- unless flash.empty?
+- unless flash[:error].nil?
   .alert.fade.in.alert-danger
     %button.close{"data-dismiss" => "alert", :type => "button"} ×
     = flash[:error]

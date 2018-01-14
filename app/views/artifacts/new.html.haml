@@ -1,4 +1,22 @@
-- model_class = Artifact
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
-= render :partial => "form"
+- unless flash[:error].nil?
+  .alert.fade.in.alert-danger
+    %button.close{"data-dismiss" => "alert", :type => "button"} ×
+    = flash[:error]
+.panel.panel-default.signed-in-panel-default
+  .panel-heading.default-panel-heading
+    %h2   
+      Add attachment for 
+      %strong
+        = @project.title
+  .panel-body.pt-30
+    = form_for @artifact, html: { class: "form form-horizontal artifact" } do |f|
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control', required: true
+      .form-group
+        = f.file_field :upload, required: true
+      = f.hidden_field :project_id
+      .text-center
+        = f.submit nil,class: 'btn btn-lg btn-danger mt-30'
+.text-center.mt-30                       
+  = link_to 'Back', tenant_project_path(id: @project.id, tenant_id: @project.tenant_id), :class => 'link-red'

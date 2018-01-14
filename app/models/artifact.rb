@@ -19,7 +19,6 @@ class Artifact < ApplicationRecord
     obj = s3.bucket(ENV['S3_BUCKET']).object("#{tenant_name}/#{upload.original_filename}")
     obj.upload_file(upload.path, acl:'public-read')
     self.key = obj.public_url
-
   end
 
   def uploaded_file_size

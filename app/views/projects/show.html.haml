@@ -1,7 +1,7 @@
 .panel.panel-default.signed-in-panel-default
   .panel-heading.default-panel-heading
     %h2 
-      %strong PROJECT 
+      %strong PROJECT: 
       = @project.title
   .panel-body.pt-30
     %ul.nav.nav-tabs.projects-menu-nav-tabs
@@ -33,5 +33,5 @@
       #attachments.tab-pane.fade
         = render 'artifacts/list', artifacts: @project.artifacts
 .text-center.mt-30                       
-  = link_to 'Back', tenant_project_path(id: @project.id, tenant_id: @project.tenant_id), :class => 'link-red'
+  = link_to 'Back', root_path, :class => 'link-red'
 

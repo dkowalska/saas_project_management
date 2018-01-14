@@ -1,6 +1,5 @@
 class ArtifactsController < ApplicationController
-  before_action :verify_tenant
-  before_action :set_artifact, only: [:show, :edit, :update, :destroy]
+  before_action :set_artifact, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /artifacts
   # GET /artifacts.json
@@ -15,6 +14,8 @@ class ArtifactsController < ApplicationController
 
   # GET /artifacts/new
   def new
+    @project = Project.find(params[:project_id])
+    authorize @project, :can_manage_artifacts?
     @artifact = Artifact.new
     @artifact.project_id = params[:project_id]
   end
@@ -48,10 +49,11 @@ class ArtifactsController < ApplicationController
   # DELETE /artifacts/1
   # DELETE /artifacts/1.json
   def destroy
+    authorize @artifact, :can_manage_artifacts?
     @artifact.destroy
     redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Artifact was successfully destroyed.'
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_artifact
