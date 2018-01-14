@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(version: 20180107143007) do
     t.string "name"
     t.string "key"
     t.bigint "project_id"
+    t.bigint "tenant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_artifacts_on_project_id"
+    t.index ["tenant_id"], name: "index_artifacts_on_tenant_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -109,7 +111,6 @@ ActiveRecord::Schema.define(version: 20180107143007) do
   add_foreign_key "artifacts", "projects"
   add_foreign_key "members", "tenants"
   add_foreign_key "members", "users"
-  add_foreign_key "projects", "tenants"
   add_foreign_key "tenants", "tenants"
   add_foreign_key "user_projects", "projects"
   add_foreign_key "user_projects", "users"

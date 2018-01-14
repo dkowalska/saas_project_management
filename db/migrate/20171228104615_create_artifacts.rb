@@ -4,6 +4,7 @@ class CreateArtifacts < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :key
       t.belongs_to :project, foreign_key: true
+      t.references :tenant
 
       t.timestamps
     end

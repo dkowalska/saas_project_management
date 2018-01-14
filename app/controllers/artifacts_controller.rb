@@ -1,4 +1,5 @@
 class ArtifactsController < ApplicationController
+  before_action :verify_tenant
   before_action :set_artifact, only: [:show, :edit, :update, :destroy]
 
   # GET /artifacts

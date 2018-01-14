@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+
+  acts_as_tenant
   belongs_to :tenant
   validates_uniqueness_of :title
   has_many :artifacts, dependent: :destroy

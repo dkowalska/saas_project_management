@@ -324,3 +324,24 @@ body, html {
 .projects-menu-nav-tabs > li > a:hover{
   color: #0d0d0d;
 }
+
+.project-progress {
+  height: 40px;
+}
+
+.project-progress-bar {
+  padding: 9px;
+}
+
+.details-well {
+  min-height: 200px;
+}
+
+.btn-project-overview {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.well-light {
+  background-color: #f8f8f8;
+}
