@@ -1,0 +1,11 @@
+.comment-form.mb-50
+  = form_for([@tenant, @project, @project.comments.build], remote: true) do |f|
+    .form-group
+      = f.label :content, "Message content:"
+      = f.text_area :content, class: 'form-control', required: true
+    = f.hidden_field :tenant_id, value: params[:tenant_id], class: 'form-control'
+    = f.hidden_field :user_id, value: current_user.id, class: 'form-control'
+    = f.hidden_field :project_id, value: @project.id, class: 'form-control'
+    = f.hidden_field :client_comm, value: true, class: 'form-control'
+    .text-center
+      = f.submit 'Send message', disable_with: "Sending…", class: 'btn btn-danger mt-30'

@@ -3,6 +3,8 @@ class Tenant < ApplicationRecord
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
   has_many :projects, dependent: :destroy
+  has_many :artifacts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates_uniqueness_of :name
   validates_presence_of :name
 

@@ -33,8 +33,8 @@ module ApplicationHelper
     link_to label, "#{artifact_key}", target: 'new'
   end
 
-  def member_name(current_user)
-    member = Member.where(tenant_id: current_user.tenants.first.id, user_id: current_user.id).first
+  def member_name(user)
+    member = Member.where(tenant_id: user.tenants.first.id, user_id: user.id).first
     "#{member.first_name} #{member.last_name}"
   end
 

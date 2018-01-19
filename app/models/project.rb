@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   acts_as_tenant
   belongs_to :tenant
   validates_uniqueness_of :title
+  has_many :comments, dependent: :destroy
   has_many :artifacts, dependent: :destroy
   has_many :user_projects, :dependent => :destroy
   has_many :users, through: :user_projects

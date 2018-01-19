@@ -7,12 +7,13 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @all_projects = Project.by_user_plan_and_tenant(params[:tenant_id], current_user)
-    byebug
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @client_comm = @project.comments.where.not(id: nil).where(client_comm: true)
+    @comments = @project.comments.where.not(id: nil).where(client_comm: false)
   end
 
   # GET /projects/new

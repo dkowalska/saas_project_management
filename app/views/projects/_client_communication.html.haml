@@ -1,0 +1,6 @@
+.row
+  .col-lg-12.pl-30.pr-30
+    = render "comments/form_project"
+    - unless @client_comm.empty?
+      .comments
+        = render :partial => 'comments/comment', :collection => @client_comm
