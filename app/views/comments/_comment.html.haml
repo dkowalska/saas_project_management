@@ -1,5 +1,5 @@
 .comment
-  %hr
+  %hr.comment-divider
   - if (current_user == comment.user || current_user.is_admin?)
     %p
       = link_to "×", tenant_project_comment_path(comment, tenant_id: comment.tenant.id, project_id: comment.project.id), :method => :delete, :remote => true, :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'

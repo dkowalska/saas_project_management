@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @client_comm = @project.comments.where.not(id: nil).where(client_comm: true)
-    @comments = @project.comments.where.not(id: nil).where(client_comm: false)
+    @project_comm = @project.comments.where.not(id: nil).where(client_comm: false)
   end
 
   # GET /projects/new

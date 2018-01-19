@@ -19,9 +19,9 @@
       #overview.tab-pane.fade.in.active
         = render 'projects/overview'
       #client_communication.tab-pane.fade
-        = render 'projects/client_communication'
+        = render 'projects/comments', comments: @client_comm, is_client_com: true
       #comments.tab-pane.fade
-
+        = render 'projects/comments', comments: @project_comm, is_client_com: false
       #tasks.tab-pane.fade
 
       #attachments.tab-pane.fade
