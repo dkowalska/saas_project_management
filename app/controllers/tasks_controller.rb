@@ -8,6 +8,35 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def create
+    authorize Task, :can_create_tasks?
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to tenant_project_path(id: @project.id, tenant_id: @tenant.id), notice: 'Task was successfully created.' 
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    if @task.destroy
+      render :json => @task, :status => :ok
+    else
+      render :js => "alert('error deleting task');"
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @task.update(task_params)
+      redirect_to tenant_project_task_path(id: @task.id, project_id: @project.id, tenant_id: @tenant.id), notice: 'Task was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
 
     def set_task

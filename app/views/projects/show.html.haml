@@ -24,7 +24,7 @@
       #comments.tab-pane.fade
         = render 'projects/tabs/comments', comments: @project_comm, is_client_com: false
       #tasks.tab-pane.fade
-        = render 'projects/tabs/tasks'
+        = render 'projects/tabs/tasks', tasks: @project.tasks
       #attachments.tab-pane.fade
         = render 'artifacts/list', artifacts: @project.artifacts
 .text-center.mt-30                       

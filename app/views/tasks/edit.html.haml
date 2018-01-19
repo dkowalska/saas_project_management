@@ -1,0 +1,39 @@
+- unless flash[:error].nil?
+  .alert.fade.in.alert-danger
+    %button.close{"data-dismiss" => "alert", :type => "button"} ×
+    = flash[:error]
+.panel.panel-default.signed-in-panel-default
+  .panel-heading.default-panel-heading
+    %h2   
+      %strong EDIT TASK
+  .panel-body.pt-30   
+    = form_for [@tenant, @project, @task] do |f|
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control', required: true
+      .form-group
+        = f.label :description
+        = f.text_area :description, class: 'form-control', required: true
+      .row
+        .col-lg-3.pl-0
+          .form-group
+            = f.label :status
+            = f.select :status, options_for_select(Task.statuses.keys.map { |r| [r.humanize, r]}, f.object.status), {}, html: {selected: true}, required: true, class: "form-control"
+        .col-lg-3.pl-0
+          .form-group
+            = f.label :priority
+            = f.select :priority, options_for_select(Task.priorities.keys.map { |r| [r.humanize, r]}, f.object.priority), {}, html: {selected: true}, required: true, class: "form-control"
+        .col-lg-3
+          .form-group
+            = f.label :start_date
+            = f.text_field :start_date, class: 'form-control datepicker', required: true
+        .col-lg-3.pr-0
+          .form-group
+            = f.label :end_date
+            = f.text_field :end_date, class: 'form-control datepicker', required: true
+      = f.hidden_field :tenant_id, value: params[:tenant_id], class: 'form-control'
+      = f.hidden_field :project_id, value: params[:project_id], class: 'form-control'
+      .text-center
+        = f.submit 'Edit task',class: 'btn btn-danger mt-30'
+.text-center.mt-30                       
+  = link_to 'Back', tenant_project_task_path(@task, project_id: @project.id, tenant_id: @project.tenant_id), :class => 'link-red'

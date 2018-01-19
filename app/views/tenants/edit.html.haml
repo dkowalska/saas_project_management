@@ -9,7 +9,7 @@
     = form_for @tenant, url: update_plan_path do |f|
       .form-group
         = f.label :plan
-        = f.select :plan, options_for_select(Plan.options, '#{@tenant.plan}'), {}, required: true, class: "form-control"
+        = f.select :plan, options_for_select(Plan.options, f.object.plan), {}, html: {selected: true}, required: true, class: "form-control"
       .form-group
         = f.label :current_password
         %i
