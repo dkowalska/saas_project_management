@@ -18,13 +18,13 @@
         %a{"data-toggle" => "tab", :href => "#attachments"} Attachments
     .tab-content.mt-50
       #overview.tab-pane.fade.in.active
-        = render 'projects/overview'
+        = render 'projects/tabs/overview'
       #client_communication.tab-pane.fade
-        = render 'projects/comments', comments: @client_comm, is_client_com: true
+        = render 'projects/tabs/comments', comments: @client_comm, is_client_com: true
       #comments.tab-pane.fade
-        = render 'projects/comments', comments: @project_comm, is_client_com: false
+        = render 'projects/tabs/comments', comments: @project_comm, is_client_com: false
       #tasks.tab-pane.fade
-
+        = render 'projects/tabs/tasks'
       #attachments.tab-pane.fade
         = render 'artifacts/list', artifacts: @project.artifacts
 .text-center.mt-30                       

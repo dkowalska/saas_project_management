@@ -66,6 +66,7 @@ body, html {
 
 // Paddings and margins
 
+
 .mt-10 {
   margin-top: 10px;
 }
@@ -94,8 +95,12 @@ body, html {
   padding-left: 30px
 }
 
+.pr-0 {
+  padding-right: 0px
+}
+
 .pr-30 {
-  padding-left: 30px
+  padding-right: 30px
 }
 
 .pt-30 {

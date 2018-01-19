@@ -1,0 +1,37 @@
+- unless flash[:error].nil?
+  .alert.fade.in.alert-danger
+    %button.close{"data-dismiss" => "alert", :type => "button"} ×
+    = flash[:error]
+.panel.panel-default.signed-in-panel-default
+  .panel-heading.default-panel-heading
+    %h2   
+      %strong CREATE TASK FOR PROJECT
+      = @project.title
+  .panel-body.pt-30   
+    = form_for [@tenant, @project, @task] do |f|
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control', required: true
+      .form-group
+        = f.label :description
+        = f.text_area :description, class: 'form-control', required: true
+      .row
+        .col-lg-4.pl-0
+          .form-group
+            = f.label :priority
+            = f.select :priority, options_for_select(Task.priorities.keys.map { |r| [r.humanize, r]}),{}, required: true, class: "form-control"
+        .col-lg-4
+          .form-group
+            = f.label :start_date
+            = f.text_field :start_date, class: 'form-control datepicker', required: true
+        .col-lg-4.pr-0
+          .form-group
+            = f.label :end_date
+            = f.text_field :end_date, class: 'form-control datepicker', required: true
+      = f.hidden_field :tenant_id, value: params[:tenant_id], class: 'form-control'
+      = f.hidden_field :project_id, value: params[:project_id], class: 'form-control'
+      = f.hidden_field :status, value: 'defined', class: 'form-control'
+      .text-center
+        = f.submit 'Create task',class: 'btn btn-danger mt-30'
+.text-center.mt-30                       
+  = link_to 'Back', tenant_project_path(id: @project.id, tenant_id: @project.tenant_id), :class => 'link-red'

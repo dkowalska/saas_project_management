@@ -5,6 +5,7 @@ class Tenant < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :artifacts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :tasks, dependent: :destroy
   validates_uniqueness_of :name
   validates_presence_of :name
 
