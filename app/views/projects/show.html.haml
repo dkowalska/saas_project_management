@@ -9,8 +9,9 @@
         %a{"data-toggle" => "tab", :href => "#overview", class: 'red-link'} Overview
       %li
         %a{"data-toggle" => "tab", :href => "#client_communication"} Client communication
-      %li
-        %a{"data-toggle" => "tab", :href => "#comments"} Comments
+      - unless current_user.is_client?
+        %li
+          %a{"data-toggle" => "tab", :href => "#comments"} Comments
       %li
         %a{"data-toggle" => "tab", :href => "#tasks"} Tasks
       %li
