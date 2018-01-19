@@ -23,6 +23,6 @@
         = f.text_field :expected_completion_date, class: 'form-control datepicker', required: true
       = f.hidden_field :tenant_id, value: params[:tenant_id], class: 'form-control'
       .text-center
-        = f.submit 'Update project',class: 'btn btn-lg btn-danger mt-30'
+        = f.submit 'Update project',class: 'btn btn-danger mt-30'
 .text-center.mt-30                       
   = link_to 'Back', root_path, :class => 'link-red'

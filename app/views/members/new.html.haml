@@ -25,6 +25,6 @@
           = f.label :role
           = w.select :role, options_for_select(User.roles.keys.map { |r| [r.humanize, r]}),{}, required: true, class: "form-control"
         .text-center
-          %button.btn.btn-lg.btn-danger.mt-10.button{ :type => "submit" }
+          %button.btn.btn-danger.mt-10.button{ :type => "submit" }
             Create user
 
