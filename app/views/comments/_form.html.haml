@@ -1,4 +1,4 @@
-.comment-form.mb-50
+%div{:class => is_client_com ? "client-comment-form" : "project-comment-form"}
   = form_for([@tenant, @project, @project.comments.build], remote: true) do |f|
     .form-group
       - if is_client_com 

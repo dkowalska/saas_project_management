@@ -1,4 +1,4 @@
-.comment
+%div{:class => comment.client_comm ? "client-comment" : "project-comment"}
   %hr.comment-divider
   - if (current_user == comment.user || current_user.is_admin?)
     %p

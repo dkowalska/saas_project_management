@@ -68,4 +68,9 @@ module ApplicationHelper
       "In planning"
     end
   end
+
+  def completed_tasks_percentage(project)
+    percentage = (project.tasks.count / project.tasks.published.count) * 100
+    "#{percentage}%"
+  end
 end

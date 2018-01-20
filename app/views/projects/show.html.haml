@@ -8,14 +8,26 @@
       %li.active
         %a{"data-toggle" => "tab", :href => "#overview", class: 'red-link'} Overview
       %li
-        %a{"data-toggle" => "tab", :href => "#client_communication"} Client communication
+        %a{"data-toggle" => "tab", :href => "#client_communication"} 
+          Client communication
+          %span.badge#client-comm-count
+            = @client_comm.count
       - unless current_user.is_client?
         %li
-          %a{"data-toggle" => "tab", :href => "#comments"} Comments
+          %a{"data-toggle" => "tab", :href => "#comments"} 
+            Comments
+            %span.badge#project-comm-count
+              = @project_comm.count
       %li
-        %a{"data-toggle" => "tab", :href => "#tasks"} Tasks
+        %a{"data-toggle" => "tab", :href => "#tasks"} 
+          Tasks
+          %span.badge#tasks-count
+            = @project.tasks.count
       %li
-        %a{"data-toggle" => "tab", :href => "#attachments"} Attachments
+        %a{"data-toggle" => "tab", :href => "#attachments"} 
+          Attachments
+          %span.badge 
+            = @project.artifacts.count
     .tab-content.mt-50
       #overview.tab-pane.fade.in.active
         = render 'projects/tabs/overview'
