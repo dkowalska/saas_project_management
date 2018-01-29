@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :member, :dependent => :destroy
   has_many :user_projects
   has_many :projects, through: :user_projects
+  has_many :subtasks, dependent: :destroy
 
   enum role: {admin: 0, account_manager: 1, graphic_designer: 2, copywriter: 3, client: 4}
 

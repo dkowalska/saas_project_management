@@ -49,6 +49,7 @@ class TasksController < ApplicationController
     comments = @task.comments.where.not(id: nil)
     @client_comm = comments.where(client_comm: true).order(id: :desc)
     @project_comm = comments.where(client_comm: false).order(id: :desc)
+    @subtasks = @task.subtasks.where.not(id: nil).order(id: :desc)
   end
 
   private

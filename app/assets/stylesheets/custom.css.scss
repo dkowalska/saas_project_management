@@ -79,6 +79,10 @@ body, html {
   margin-top: 50px;
 }
 
+.mb-0 {
+  margin-bottom: 0px
+}
+
 .mb-50 {
   margin-bottom: 50px
 }
@@ -362,4 +366,8 @@ body, html {
 
 .badge {
   background-color: #d9d9d9;
+}
+
+.full-width {
+  width: 100% !important;
 }

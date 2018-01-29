@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       get 'users', on: :member
       put 'add_user', on: :member
       resources :comments, :only => [:create, :destroy]
-      resources :tasks, :except => [:destroy]
+      resources :tasks, :except => [:destroy] do
+        resources :subtasks, :only => [:create, :destroy]
+      end
       delete 'tasks/destroy_from_list', :to => 'tasks#destroy_from_list'
       delete 'tasks/destroy_from_show', :to => 'tasks#destroy_from_show'
     end

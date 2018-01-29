@@ -1,0 +1,16 @@
+.subtask
+  %hr.comment-divider
+  .row
+    .col-lg-6.pl-0
+      .well.well-sm.well-light.mb-0
+        = subtask.description
+    .col-lg-3.pl-0
+      .well.well-sm.well-light.mb-0
+        = subtask.user.email
+    .col-lg-2.pl-0
+      .well.well-sm.well-light.mb-0
+        = subtask.status.humanize
+    .col-lg-1.pl-0.pr-0.mb-0
+      = link_to 'Delete', tenant_project_task_subtask_path(subtask, task_id: subtask.task.id, project_id: subtask.task.project.id, tenant_id: subtask.task.project.tenant.id), :method => "delete", :remote => true,  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger btn-project-overview'
+  
+

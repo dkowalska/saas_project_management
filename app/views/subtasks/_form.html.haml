@@ -1,0 +1,24 @@
+.subtask-form
+  .mt-30.mb-50
+    = form_for([@tenant, @project, @task, @task.subtasks.build], remote: true) do |f|
+      .row
+        .col-lg-6.pl-0
+          = f.label :description, "Description:"
+        .col-lg-3.pl-0
+          = f.label :user_id, "User:"
+        .col-lg-2.pl-0
+          = f.label :user_id, "Status:"
+      .row
+        .col-lg-6.pl-0
+          .form-group.full-width
+            = f.text_field :description, class: 'form-control full-width', required: true
+        .col-lg-3.pl-0
+          .form-group.full-width
+            = f.select :user_id, options_for_select(@project.users.map { |u| [u.email, u.id]}),{}, required: true, class: "form-control full-width"
+        .col-lg-2.pl-0
+          .form-group.full-width
+            = f.select :status, options_for_select(Subtask.statuses.keys.map { |r| [r.humanize, r]}),{}, required: true, class: "form-control full-width"
+          = f.hidden_field :task_id, value: @task.id
+        .col-lg-1.pl-0.pr-0
+          .form-group.full-width
+            = f.submit 'Add', disable_with: "Adding…", class: 'btn btn-danger full-width'

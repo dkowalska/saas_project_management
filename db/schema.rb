@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129193220) do
+ActiveRecord::Schema.define(version: 20180129201147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,19 @@ ActiveRecord::Schema.define(version: 20180129193220) do
     t.datetime "updated_at", null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "subtasks", force: :cascade do |t|
+    t.text "description"
+    t.bigint "user_id"
+    t.bigint "tenant_id"
+    t.bigint "task_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_subtasks_on_task_id"
+    t.index ["tenant_id"], name: "index_subtasks_on_tenant_id"
+    t.index ["user_id"], name: "index_subtasks_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -147,6 +160,9 @@ ActiveRecord::Schema.define(version: 20180129193220) do
   add_foreign_key "comments", "users"
   add_foreign_key "members", "tenants"
   add_foreign_key "members", "users"
+  add_foreign_key "subtasks", "tasks"
+  add_foreign_key "subtasks", "tenants"
+  add_foreign_key "subtasks", "users"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "tenants"
   add_foreign_key "tenants", "tenants"
