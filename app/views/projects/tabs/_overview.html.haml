@@ -90,8 +90,8 @@
         %p
           %strong Progress:
           .progress.project-progress
-            .progress-bar.progress-bar-danger.progress-bar-striped.project-progress-bar.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "70", :role => "progressbar", :style => "width:#{completed_tasks_percentage(@project)}"}
-              = completed_tasks_percentage(@project)
+            .progress-bar.progress-bar-danger.progress-bar-striped.project-progress-bar.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "#{completed_tasks_percentage(@project)}", :role => "progressbar", :style => "width:#{completed_tasks_percentage(@project)}%"}
+              = completed_tasks_percentage(@project) + '%'
     - if policy(@project).can_manage_projects?
       .row
         .col-lg-12

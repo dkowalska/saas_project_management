@@ -70,7 +70,11 @@ module ApplicationHelper
   end
 
   def completed_tasks_percentage(project)
-    percentage = (project.tasks.count / project.tasks.published.count) * 100
-    "#{percentage}%"
+    if project.tasks.count > 0 && project.tasks.published.count > 0
+      percentage = (project.tasks.count / project.tasks.published.count) * 100
+    else
+      percentage = 0
+    end
+    "#{percentage}"
   end
 end
