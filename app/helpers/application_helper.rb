@@ -93,4 +93,8 @@ module ApplicationHelper
       "100"
     end
   end
+
+  def humanize(text)
+    "#{text.humanize}"
+  end
 end

@@ -64,6 +64,10 @@ body, html {
   width: 60px;
 }
 
+.button-39 {
+  height: 39px;
+}
+
 // Paddings and margins
 
 
@@ -171,6 +175,10 @@ body, html {
 .form-control:focus {
   border-color: #ff534f;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 29, 26, 0.6);
+}
+
+.form-control {
+  min-height: 39px;
 }
 
 // Navbar
@@ -370,4 +378,8 @@ body, html {
 
 .full-width {
   width: 100% !important;
+}
+
+.well-subtask {
+  display: block;
 }

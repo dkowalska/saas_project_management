@@ -2,15 +2,13 @@
   %hr.comment-divider
   .row
     .col-lg-6.pl-0
-      .well.well-sm.well-light.mb-0
-        = subtask.description
+      %p
+        = best_in_place subtask, :description, url: tenant_project_task_subtask_path(subtask, task_id: subtask.task.id, project_id: subtask.task.project.id, tenant_id: subtask.task.project.tenant.id), class: 'well well-sm well-light well-subtask mb-0', inner_class: 'form-control'
     .col-lg-3.pl-0
-      .well.well-sm.well-light.mb-0
-        = subtask.user.email
+      = best_in_place subtask, :user_id, url: tenant_project_task_subtask_path(subtask, task_id: subtask.task.id, project_id: subtask.task.project.id, tenant_id: subtask.task.project.tenant.id), class: 'well well-sm well-light well-subtask mb-0', inner_class: 'form-control', display_as: :user_email, as: :select, collection: @project.users.map { |u| [u.id, u.email]}
     .col-lg-2.pl-0
-      .well.well-sm.well-light.mb-0
-        = subtask.status.humanize
+      = best_in_place subtask, :status, url: tenant_project_task_subtask_path(subtask, task_id: subtask.task.id, project_id: subtask.task.project.id, tenant_id: subtask.task.project.tenant.id), class: 'well well-sm well-light well-subtask mb-0', inner_class: 'form-control', display_as: :humanize_status, as: :select, collection: Subtask.status_options
     .col-lg-1.pl-0.pr-0.mb-0
-      = link_to 'Delete', tenant_project_task_subtask_path(subtask, task_id: subtask.task.id, project_id: subtask.task.project.id, tenant_id: subtask.task.project.tenant.id), :method => "delete", :remote => true,  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger btn-project-overview'
+      = link_to 'Delete', tenant_project_task_subtask_path(subtask, task_id: subtask.task.id, project_id: subtask.task.project.id, tenant_id: subtask.task.project.tenant.id), :method => "delete", :remote => true,  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger btn-project-overview button-39'
   
 

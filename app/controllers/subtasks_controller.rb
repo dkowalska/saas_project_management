@@ -19,6 +19,18 @@ class SubtasksController < ApplicationController
     end
   end
 
+  def update
+    @subtask = Subtask.find(params[:id])
+
+    respond_to do |format|
+    if @subtask.update_attributes(subtask_params)
+      format.json { respond_with_bip(@subtask) }
+    else
+      format.json { respond_with_bip(@subtask) }
+    end
+  end
+  end
+
   def subtask_params
     params.require(:subtask).permit(:description, :task_id, :user_id, :status)
   end
