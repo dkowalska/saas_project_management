@@ -6,12 +6,12 @@
       - else
         = f.label :content, "Comment content:"
       = f.text_area :content, class: 'form-control', required: true
-    = f.hidden_field :tenant_id, value: params[:tenant_id], class: 'form-control'
-    = f.hidden_field :user_id, value: current_user.id, class: 'form-control'
-    = f.hidden_field :project_id, value: @project.id, class: 'form-control'
-    = f.hidden_field :client_comm, value: is_client_com, class: 'form-control'
+    = f.hidden_field :tenant_id, value: params[:tenant_id]
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :project_id, value: @project.id
+    = f.hidden_field :client_comm, value: is_client_com
     - task_id = @task ? @task.id : nil
-    = f.hidden_field :task_id, value: task_id, class: 'form-control'
+    = f.hidden_field :task_id, value: task_id
     .text-center
       - if is_client_com
         = f.submit 'Send message', disable_with: "Sending…", class: 'btn btn-danger mt-30'

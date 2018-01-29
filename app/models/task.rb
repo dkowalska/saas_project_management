@@ -5,6 +5,7 @@ class Task < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :status
   has_many :comments, dependent: :destroy
+  has_many :artifacts, dependent: :destroy
 
   enum status: {defined: 0, in_progress: 1, completed: 2, account_acceptance: 3, client_acceptance: 4, published: 5}
   enum priority: {low: 0, medium: 1, high: 2}

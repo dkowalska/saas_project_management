@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
     comments = @project.comments.where.not(id: nil).where(task_id: nil)
     @client_comm = comments.where(client_comm: true).order(id: :desc)
     @project_comm = comments.where(client_comm: false).order(id: :desc)
+    @artifacts = @project.artifacts.where(task_id: nil)
   end
 
   # GET /projects/new

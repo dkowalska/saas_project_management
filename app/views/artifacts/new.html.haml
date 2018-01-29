@@ -18,6 +18,7 @@
           .form-group
             = f.file_field :upload, required: true
           = f.hidden_field :project_id
+          = f.hidden_field :task_id
           .text-center
             = f.submit 'Add attachment',class: 'btn btn-danger mt-30'
 .text-center.mt-30                       

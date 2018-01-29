@@ -27,7 +27,7 @@
         %a{"data-toggle" => "tab", :href => "#attachments"} 
           Attachments
           %span.badge#artifacts-count
-            = @project.artifacts.count
+            = @artifacts.count
     .tab-content.mt-50
       #overview.tab-pane.fade.in.active
         = render 'projects/tabs/overview'
@@ -38,7 +38,7 @@
       #tasks.tab-pane.fade
         = render 'projects/tabs/tasks', tasks: @project.tasks
       #attachments.tab-pane.fade
-        = render 'artifacts/list', artifacts: @project.artifacts
+        = render 'artifacts/list', artifacts: @artifacts, task_id: ""
 .text-center.mt-30                       
   = link_to 'Back', root_path, :class => 'link-red'
 

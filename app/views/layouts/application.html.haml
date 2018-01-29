@@ -25,6 +25,10 @@
       .container.app-body
         .row
           .col-lg-12
-            = yield
+            - if current_user
+              = bootstrap_flash
+              = yield
+            - else
+              = yield
     - else
       = yield

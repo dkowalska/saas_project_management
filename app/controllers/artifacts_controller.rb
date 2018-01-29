@@ -18,6 +18,7 @@ class ArtifactsController < ApplicationController
     authorize @project, :can_manage_artifacts?
     @artifact = Artifact.new
     @artifact.project_id = params[:project_id]
+    @artifact.task_id = params[:task_id]
   end
 
   # GET /artifacts/1/edit
@@ -28,9 +29,14 @@ class ArtifactsController < ApplicationController
   # POST /artifacts.json
   def create
     @artifact = Artifact.new(artifact_params)
+    create_result = @artifact.save
 
-    if @artifact.save
-      redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Artifact was successfully created.'
+    if create_result 
+      if artifact_params[:task_id].empty?
+        redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Attachment was successfully uploaded.'
+      else
+        redirect_to tenant_project_task_url(tenant_id: Tenant.current_tenant_id, project_id: @artifact.project_id, id: @artifact.task_id), notice: 'Attachment was successfully uploaded.'
+      end
     else
       render :new
     end
@@ -40,7 +46,7 @@ class ArtifactsController < ApplicationController
   # PATCH/PUT /artifacts/1.json
   def update
     if @artifact.update(artifact_params)
-      redirect_to @artifact, notice: 'Artifact was successfully updated.'
+      redirect_to @artifact, notice: 'Attachment was successfully updated.'
     else
       render :edit
     end
@@ -53,7 +59,7 @@ class ArtifactsController < ApplicationController
     if @artifact.destroy
       render :json => @artifact, :status => :ok
     else
-      render :js => "alert('error deleting comment');"
+      render :js => "alert('error deleting attachment');"
     end
     #redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Artifact was successfully destroyed.'
   end
@@ -66,6 +72,6 @@ class ArtifactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artifact_params
-      params.require(:artifact).permit(:name, :project_id, :upload)
+      params.require(:artifact).permit(:name, :project_id, :upload, :task_id)
     end
 end
