@@ -50,8 +50,12 @@ class ArtifactsController < ApplicationController
   # DELETE /artifacts/1.json
   def destroy
     authorize @artifact, :can_manage_artifacts?
-    @artifact.destroy
-    redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Artifact was successfully destroyed.'
+    if @artifact.destroy
+      render :json => @artifact, :status => :ok
+    else
+      render :js => "alert('error deleting comment');"
+    end
+    #redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id), notice: 'Artifact was successfully destroyed.'
   end
   
   private

@@ -26,7 +26,7 @@
       %li
         %a{"data-toggle" => "tab", :href => "#attachments"} 
           Attachments
-          %span.badge 
+          %span.badge#artifacts-count
             = @project.artifacts.count
     .tab-content.mt-50
       #overview.tab-pane.fade.in.active
