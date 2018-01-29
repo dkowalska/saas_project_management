@@ -46,7 +46,10 @@
           = link_to 'Delete Task', tenant_project_tasks_destroy_from_show_path(id: @task, project_id: @project.id, tenant_id: @tenant.id), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger btn-project-overview'
 .row.mt-50
   %h3.text-center
-    SUBTASKS
+    %strong
+      = 'SUBTASKS (' 
+      = @subtasks.count 
+      = ')'
   .col-lg-12.pl-30.pr-30
     = render "subtasks/form"
     - unless @subtasks.empty?
