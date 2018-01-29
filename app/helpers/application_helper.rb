@@ -77,4 +77,20 @@ module ApplicationHelper
     end
     "#{percentage}"
   end
+
+  def task_progress_percentage(task)
+    if task.status == "defined"
+      "0"
+    elsif task.status == "in_progress"
+      "20"
+    elsif task.status == "completed"
+      "40"
+    elsif task.status == "account_acceptance"
+      "60"
+    elsif task.status == "client_acceptance"
+      "80"
+    elsif task.status == "published"
+      "100"
+    end
+  end
 end

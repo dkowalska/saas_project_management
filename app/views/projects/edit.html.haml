@@ -25,4 +25,4 @@
       .text-center
         = f.submit 'Update project',class: 'btn btn-danger mt-30'
 .text-center.mt-30                       
-  = link_to 'Back', root_path, :class => 'link-red'
+  = link_to 'Back', tenant_project_path(id: @project.id, tenant_id: @project.tenant_id), :class => 'link-red'

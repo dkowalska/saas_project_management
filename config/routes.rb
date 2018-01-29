@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       get 'users', on: :member
       put 'add_user', on: :member
       resources :comments, :only => [:create, :destroy]
-      resources :tasks
+      resources :tasks, :except => [:destroy]
+      delete 'tasks/destroy_from_list', :to => 'tasks#destroy_from_list'
+      delete 'tasks/destroy_from_show', :to => 'tasks#destroy_from_show'
     end
   end
   
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
   get 'home/index'
 
   get 'user', to: 'users#show'
+
+
 
   root :to => "home#index"
 

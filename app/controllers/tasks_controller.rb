@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :new, :create]
-  before_action :set_tenant, only: [:show, :edit, :update, :destroy, :new, :create]
+  before_action :set_task, only: [:show, :edit, :update, :destroy_from_list, :destroy_from_show]
+  before_action :set_project, only: [:show, :edit, :update, :destroy_from_list, :destroy_from_show, :new, :create]
+  before_action :set_tenant, only: [:show, :edit, :update, :destroy_from_list, :destroy_from_show, :new, :create]
 
   def new
     authorize Task, :can_create_tasks?
@@ -18,11 +18,19 @@ class TasksController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy_from_list
     if @task.destroy
-      render :json => @task, :status => :ok
+      render :json => @task, :status => :ok 
     else
-      render :js => "alert('error deleting task');"
+      render :js => "alert('error deleting task');" 
+    end
+  end
+
+  def destroy_from_show
+    if @task.destroy
+      redirect_to tenant_project_path(id: @project.id, tenant_id: @tenant.id), notice: 'Task was successfully deleted.'
+    else
+      redirect_to tenant_project_path(id: @project.id, tenant_id: @tenant.id), error: 'Task could not be deleted.'
     end
   end
 

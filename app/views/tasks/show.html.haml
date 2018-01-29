@@ -1,0 +1,36 @@
+.panel.panel-default.signed-in-panel-default
+  .panel-heading.default-panel-heading
+    %h2 
+      %strong TASK: 
+      = @task.name
+  .panel-body.pt-30
+    %ul.nav.nav-tabs.projects-menu-nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#overview", class: 'red-link'} Overview
+      %li
+        %a{"data-toggle" => "tab", :href => "#client_communication"} 
+          Client communication
+          %span.badge#client-comm-count
+            99
+      - unless current_user.is_client?
+        %li
+          %a{"data-toggle" => "tab", :href => "#comments"} 
+            Comments
+            %span.badge#task-comm-count
+              99
+      %li
+        %a{"data-toggle" => "tab", :href => "#attachments"} 
+          Attachments
+          %span.badge#artifacts-count
+            99
+    .tab-content.mt-50
+      #overview.tab-pane.fade.in.active
+        = render 'tasks/tabs/overview'
+      #client_communication.tab-pane.fade
+
+      #comments.tab-pane.fade
+ 
+      #attachments.tab-pane.fade
+ 
+.text-center.mt-30                       
+  = link_to 'Back', tenant_project_path(id: @project.id, tenant_id: @project.tenant_id), :class => 'link-red'
