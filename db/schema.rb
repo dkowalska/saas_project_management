@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119152405) do
+ActiveRecord::Schema.define(version: 20180129185408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,9 @@ ActiveRecord::Schema.define(version: 20180119152405) do
     t.bigint "tenant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "task_id"
     t.index ["project_id"], name: "index_comments_on_project_id"
+    t.index ["task_id"], name: "index_comments_on_task_id"
     t.index ["tenant_id"], name: "index_comments_on_tenant_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define(version: 20180119152405) do
 
   add_foreign_key "artifacts", "projects"
   add_foreign_key "comments", "projects"
+  add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "users"
   add_foreign_key "members", "tenants"
   add_foreign_key "members", "users"

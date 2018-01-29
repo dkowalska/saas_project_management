@@ -11,13 +11,13 @@
         %a{"data-toggle" => "tab", :href => "#client_communication"} 
           Client communication
           %span.badge#client-comm-count
-            99
+            = @client_comm.count
       - unless current_user.is_client?
         %li
           %a{"data-toggle" => "tab", :href => "#comments"} 
             Comments
             %span.badge#task-comm-count
-              99
+              = @project_comm.count
       %li
         %a{"data-toggle" => "tab", :href => "#attachments"} 
           Attachments
@@ -27,9 +27,9 @@
       #overview.tab-pane.fade.in.active
         = render 'tasks/tabs/overview'
       #client_communication.tab-pane.fade
-
+        = render 'tasks/tabs/comments', comments: @client_comm, is_client_com: true
       #comments.tab-pane.fade
- 
+        = render 'tasks/tabs/comments', comments: @client_comm, is_client_com: false
       #attachments.tab-pane.fade
  
 .text-center.mt-30                       
