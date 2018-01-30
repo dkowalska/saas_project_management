@@ -18,7 +18,7 @@ jQuery ->
           .removeClass('uneditable-input')
           .removeAttr('disabled', 'disabled')
           .val('');
-        $(xhr.responseText).hide().insertAfter($(this)).show('slow')
+        $(xhr.responseText).hide().insertAfter($(this)).show('fast')
         count = $('#subtask-count').text() 
         number = parseInt( count, 10 ) + 1;
         $('#subtask-count').text(number) 
@@ -29,3 +29,15 @@ jQuery ->
       if !container.is(e.target) and container.has(e.target).length == 0
         container.addClass "well well-sm well-light well-subtask mb-0"
       return
+
+    # Delete a subtask
+    $(document)
+      .on "ajax:beforeSend", ".subtask-delete", ->
+        $(this).closest(".subtask").fadeTo('fast', 0.5)
+      .on "ajax:success", ".subtask-delete", ->
+        $(this).closest(".subtask").hide('slow')
+        count = $('#subtask-count').text() 
+        number = parseInt( count, 10 ) - 1;
+        $('#subtask-count').text(number) 
+      .on "ajax:error", ".subtask-delete", ->
+        $(this).closest(".subtask").fadeTo('fast', 1)

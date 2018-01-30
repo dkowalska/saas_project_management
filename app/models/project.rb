@@ -6,8 +6,10 @@ class Project < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :artifacts, dependent: :destroy
+  has_many :subtasks, dependent: :destroy
   has_many :user_projects, :dependent => :destroy
   has_many :users, through: :user_projects
+
   validate :free_plan_can_only_have_one_project
 
   def free_plan_can_only_have_one_project

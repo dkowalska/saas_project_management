@@ -47,9 +47,9 @@
 .row.mt-50
   %h3.text-center
     %strong
-      = 'SUBTASKS (' 
-      = @subtasks.count 
-      = ')'
+      = 'SUBTASKS' 
+      #subtask-count
+        = @subtasks.count
   .col-lg-12.pl-30.pr-30
     = render "subtasks/form"
     - unless @subtasks.empty?

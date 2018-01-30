@@ -2,6 +2,7 @@ class Subtask < ApplicationRecord
   acts_as_tenant
   belongs_to :user
   belongs_to :task
+  belongs_to :project
 
   enum status: {defined: 0, in_progress: 1, completed: 2}
 

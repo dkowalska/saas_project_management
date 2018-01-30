@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129201147) do
+ActiveRecord::Schema.define(version: 20180130091209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 20180129201147) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_subtasks_on_project_id"
     t.index ["task_id"], name: "index_subtasks_on_task_id"
     t.index ["tenant_id"], name: "index_subtasks_on_tenant_id"
     t.index ["user_id"], name: "index_subtasks_on_user_id"
@@ -160,6 +162,7 @@ ActiveRecord::Schema.define(version: 20180129201147) do
   add_foreign_key "comments", "users"
   add_foreign_key "members", "tenants"
   add_foreign_key "members", "users"
+  add_foreign_key "subtasks", "projects"
   add_foreign_key "subtasks", "tasks"
   add_foreign_key "subtasks", "tenants"
   add_foreign_key "subtasks", "users"
