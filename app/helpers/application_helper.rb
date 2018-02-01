@@ -60,7 +60,7 @@ module ApplicationHelper
   end
 
   def project_status(project)
-    if (project.expected_start_date < Date.today) && (project.expected_completion_date > Date.today)
+    if (project.expected_start_date <= Date.today) && (project.expected_completion_date >= Date.today)
       "In progress"
     elsif project.expected_completion_date < Date.today
       "Completed"
