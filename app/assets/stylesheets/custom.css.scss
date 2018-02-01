@@ -329,6 +329,14 @@ body, html {
   color: #ff3633;
 }
 
+.sort_link, .sort_link:visited {
+  color: #ff534f;
+}
+
+.sort_link:hover, .sort_link:active, {
+  color: #ff3633;
+}
+
 .datepicker table tr td.active:active, 
 .datepicker table tr td.active.highlighted:active, 
 .datepicker table tr td.active.active, 

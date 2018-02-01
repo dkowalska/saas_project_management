@@ -1,12 +1,31 @@
-- if projects.empty?
+- if @all_projects.empty?
   %p.text-center There are no projects fulfilling this criteria.
 - else
+  = search_form_for @q, url: root_path do |f|
+    .form-group.mb-50
+      .row
+        .col-lg-2
+        .col-lg-3
+          = f.label :title_cont, 'Title contains:'
+        .col-lg-4
+          = f.label :details_cont, 'Details contain:'
+        .col-lg-3
+      .row
+        .col-lg-2
+        .col-lg-3
+          = f.search_field :title_cont, class: 'form-control'
+        .col-lg-4
+          = f.search_field :details_cont, class: 'form-control'
+        .col-lg-1
+          = f.submit 'Search', class: 'btn btn-danger button-39 full-width'
+        .col-lg-2
+
   %table.table.table-striped
     %thead
-      %th.col-lg-3 Name
+      %th.col-lg-3= sort_link @q, :title, default_order: :asc
       %th.col-lg-4 Details
-      %th.col-lg-1 Start date
-      %th.col-lg-1 Completion date
+      %th.col-lg-1= sort_link @q, :expected_start_date, 'Start date'
+      %th.col-lg-1= sort_link @q, :expected_completion_date, 'Completion date'
       %th.col-lg-2
     %tbody
       - projects.each do |project|
