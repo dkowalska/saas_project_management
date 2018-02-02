@@ -29,7 +29,7 @@
       #client_communication.tab-pane.fade
         = render 'tasks/tabs/comments', comments: @client_comm, is_client_com: true
       #comments.tab-pane.fade
-        = render 'tasks/tabs/comments', comments: @client_comm, is_client_com: false
+        = render 'tasks/tabs/comments', comments: @project_comm, is_client_com: false
       #attachments.tab-pane.fade
         = render 'artifacts/list', artifacts: @task.artifacts, task_id: @task.id
 .text-center.mt-30                       

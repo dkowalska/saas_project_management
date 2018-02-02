@@ -2,6 +2,7 @@ jQuery ->
     $('.best_in_place').best_in_place()
 
     $('.best_in_place').click ->
+      console.log "jdjdjdjdjd"
       $(this).removeClass "well well-sm well-light well-subtask mb-0"
 
     $('.best_in_place').bind 'ajax:success', ->
